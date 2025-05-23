@@ -1,9 +1,12 @@
 'use client';
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { getAccessToken } from '@/utils/tokenUtils';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const token = getAccessToken()
 
   return (
     <header className="w-full bg-white">
@@ -24,7 +27,7 @@ const Navbar = () => {
         </div>
 
         {/* Middle links */}
-        <div className="hidden md:flex space-x-6">
+        {/* <div className="hidden md:flex space-x-6">
           <Link href="#" className="text-gray-700 hover:text-[#1F75FE]">
             Newly Listed Car
           </Link>
@@ -34,7 +37,7 @@ const Navbar = () => {
           <Link href="#" className="text-gray-700 hover:text-[#1F75FE]">
             Offer
           </Link>
-        </div>
+        </div> */}
 
         {/* Right contact section */}
         <div className="flex items-center space-x-4">
@@ -57,7 +60,7 @@ const Navbar = () => {
           <div className="flex items-center">
             <div className="hidden md:flex flex-col items-end">
               <span className="text-xs text-gray-500">To More Inquiry</span>
-              <span className="text-sm font-medium">+990-737 621 432</span>
+              <span className="text-sm font-medium">+990-000 000 000</span>
             </div>
             <div className="md:ml-2 bg-gray-100 rounded-full p-2">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -75,21 +78,12 @@ const Navbar = () => {
           <nav className="hidden md:flex space-x-8 text-sm ml-3">
             <Link href="/" className="text-gray-800 font-medium hover:text-[#1F75FE] flex items-center">
               HOME
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
             </Link>
-            <Link href="/new-cars" className="text-gray-800 font-medium hover:text-[#1F75FE] flex items-center">
-              NEW CAR
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
+            <Link href="/cars" className="text-gray-800 font-medium hover:text-[#1F75FE] flex items-center">
+              Buy a Car
             </Link>
-            <Link href="/used-cars" className="text-gray-800 font-medium hover:text-[#1F75FE] flex items-center">
-              USED CAR
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
+            <Link href="/dashboard" className="text-gray-800 font-medium hover:text-[#1F75FE] flex items-center">
+              Sell a Car
             </Link>
             <Link href="/about" className="text-gray-800 font-medium hover:text-[#1F75FE] flex items-center">
               ABOUT US
@@ -113,8 +107,8 @@ const Navbar = () => {
 
           {/* Cart and sign up */}
           <div className="flex items-center space-x-5 text-sm mr-3">
-            <Link href="/signup" className="hidden md:flex bg-[#1F75FE] text-white px-5 py-2.5 rounded-md font-medium">
-              SIGN UP
+            <Link href={token ? "/dashboard" : "/login"} className="hidden md:flex bg-[#1F75FE] text-white px-5 py-2.5 rounded-md font-medium">
+              {token ? "Go to Dashboard" : "Login"}
             </Link>
           </div>
         </div>

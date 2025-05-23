@@ -30,7 +30,7 @@ export default function DashboardLayout({
       </AppShell.Header>
       
       <AppShell.Navbar>
-        <AdminNavbar />
+        <AdminNavbar/>
       </AppShell.Navbar>
       
       <AppShell.Main>{children}</AppShell.Main>

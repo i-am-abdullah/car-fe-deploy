@@ -1,64 +1,71 @@
 'use client';
 
-import React from 'react';
-import "@/app/globals.css"
-import { Heart } from 'lucide-react';
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { Phone, MessageCircle, Heart } from 'lucide-react';
+import chatService from '@/services/ChatService';
+import toast from 'react-hot-toast';
 
 interface CarHeaderProps {
   make: string;
   model: string;
   year: string;
-  rating: number;
-  price:number
+  price: number;
+  phone: string;
+  listingId: string;
+  isUserListing?: boolean;
 }
 
-interface StarRatingProps {
-  value: number;
-}
+const CarHeader: React.FC<CarHeaderProps> = ({ make, model, year, price, phone, listingId, isUserListing }) => {
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
-const StarRating: React.FC<StarRatingProps> = ({ value }) => {
-  const stars = [];
-  const fullStars = Math.floor(value);
-  const hasHalfStar = value - fullStars >= 0.5;
-  
-  for (let i = 0; i < 5; i++) {
-    if (i < fullStars) {
-      stars.push(<span key={i} className="star full">★</span>);
-    } else if (i === fullStars && hasHalfStar) {
-      stars.push(<span key={i} className="star half">★</span>);
-    } else {
-      stars.push(<span key={i} className="star empty">☆</span>);
-    }
-  }
-  
-  return <div className="star-rating">{stars}</div>;
-};
-
-const CarHeader: React.FC<CarHeaderProps> = ({ make, model, year, rating, price }) => {
-  return (
-    <div className="car-header">
-      <div className="car-title">
-        <h1>{`${make} ${model}`}</h1>
-        <p className="car-year">{year}</p>
-      </div>
+  const handleChatWithSeller = async () => {
+    try {
+      setLoading(true);
+      const response = await chatService.createConversation(listingId);
+      setLoading(false);
       
-      <div className="car-rating">
-        <StarRating value={rating} />
-        <span className="rating-value">{rating}/5</span>
-        <span className="review-count">(42 Reviews)</span>
-      </div>
-      {price && (
-  <div className="flex items-center gap-2 text-left">
-    {/* <span className="font-medium text-gray-700">Price:</span> */}
-    <span className=" font-semibold text-3xl text-[#1F75FE]">${price.toLocaleString()}</span>
-  </div>
-)}
+      router.push(`/dashboard/conversations/${response.id}`);
+    } catch (error) {
+      setLoading(false);
+      toast.error('Failed to start conversation. Please try again.');
+      console.error('Error starting conversation:', error);
+    }
+  };
 
-      <div className="action-buttons">
-        <button className="btn btn-primary">Book Now</button>
-        <button className="btn btn-outline flex justify-center gap-1.5 text-right">
-          <Heart size={19}/> Save
-        </button>
+  return (
+    <div className="car-header bg-white rounded-lg shadow p-4 my-4">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+        {/* Price display */}
+        <div className="price-container mb-4 md:mb-0">
+          <span className="font-semibold text-4xl text-[#1F75FE]">${price.toLocaleString()}</span>
+          <h1 className="text-xl font-bold text-gray-800 mt-2">{make} {model} {year}</h1>
+        </div>
+
+        {/* Contact buttons */}
+        <div className="action-buttons flex flex-wrap gap-3">
+          <a 
+            href={`tel:${phone}`} 
+            className="btn flex items-center gap-2 px-5 py-2 bg-[#1F75FE] text-white rounded-md hover:bg-blue-700 transition-colors"
+          >
+            <Phone size={18} />
+            <span>Call Seller</span>
+          </a>
+          
+          <button 
+            className={`btn flex items-center gap-2 px-5 py-2 border border-[#1F75FE] text-[#1F75FE] bg-white rounded-md hover:bg-blue-50 transition-colors ${loading ? 'opacity-70 cursor-not-allowed' : ''}     disabled:bg-gray-300
+    disabled:border-gray-300
+    disabled:text-gray-500
+    disabled:cursor-not-allowed
+    disabled:opacity-70`}
+            onClick={handleChatWithSeller}
+            disabled={loading || isUserListing}
+          >
+            <MessageCircle size={18} />
+            <span>{loading ? 'Starting Chat...' : 'Chat with Seller'}</span>
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -1,9 +1,8 @@
 import React from 'react';
-import { Specification } from '@/types/car';
 import "@/app/globals.css"
 
 interface EnginePerformanceProps {
-  performance: Specification[];
+  performance: any[];
   price: number;
 }
 

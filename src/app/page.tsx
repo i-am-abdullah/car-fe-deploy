@@ -6,10 +6,12 @@ import BrandsCarousel from '@/sections/Home/BrandCarousel';
 import WhyChooseUs from '@/sections/Home/WhyChooseUs';
 import HowItWorks from '@/sections/Home/HowItWorks';
 import Footer from '@/components/layout/Footer';
+import { Toaster } from 'react-hot-toast';
 
 const HomePage: React.FC = () => {
   return (
     <div className="min-h-screen">
+      <Toaster position="top-right" />
       <Navbar />
       <Hero />
       <FeaturedCars/>

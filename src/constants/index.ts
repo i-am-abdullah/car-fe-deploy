@@ -1,5 +1,4 @@
-import { Car } from "@/types/car";
-const carMockData: Car[] = [{
+const carMockData: any[] = [{
     id: "1",
     price: 119850,
     model: "M5",
@@ -282,3 +281,51 @@ export const mockAdminPromotions: Promotion[] = [
 ];
   
   export default carMockData
+
+  /**
+ * API base URL - Change this to your API endpoint
+ */
+export const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+
+/**
+ * Local storage key for access token
+ */
+export const tokenKey = 'admin_access_token';
+
+/**
+ * Local storage key for refresh token
+ */
+export const refreshTokenKey = 'admin_refresh_token';
+
+/**
+ * Authentication-related routes
+ */
+export const AUTH_ROUTES = {
+  LOGIN: '/login',
+  SIGNUP: '/signup',
+  FORGOT_PASSWORD: '/forgot-password',
+  RESET_PASSWORD: '/reset-password',
+};
+
+/**
+ * Protected routes that require authentication
+ */
+export const PROTECTED_ROUTES = [
+  '/dashboard',
+  '/profile',
+  '/settings',
+  '/users',
+  // Add more protected routes here
+];
+
+/**
+ * Public routes that don't require authentication
+ */
+export const PUBLIC_ROUTES = [
+  '/',
+  '/login',
+  '/signup',
+  '/forgot-password',
+  '/reset-password',
+  // Add more public routes here
+];

@@ -11,6 +11,7 @@ import {
     Zap,
     ChevronRight
 } from 'lucide-react';
+import Link from 'next/link';
 
 interface CarCardProps {
     id: string;
@@ -23,7 +24,6 @@ interface CarCardProps {
     fuelType: string;
     transmission: string;
     isElectric: boolean;
-    isFavorite: boolean;
 }
 
 const CarCard: React.FC<CarCardProps> = ({
@@ -37,13 +37,7 @@ const CarCard: React.FC<CarCardProps> = ({
     fuelType,
     transmission,
     isElectric,
-    isFavorite: initialFavorite
 }) => {
-    const [isFavorite, setIsFavorite] = useState(initialFavorite);
-
-    const toggleFavorite = () => {
-        setIsFavorite(!isFavorite);
-    };
 
     return (
         <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
@@ -55,16 +49,6 @@ const CarCard: React.FC<CarCardProps> = ({
                     fill
                     className="object-cover"
                 />
-                <button
-                    onClick={toggleFavorite}
-                    className="absolute top-3 right-3 p-2 bg-white rounded-full shadow-md z-10 transition-colors duration-300"
-                    aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
-                >
-                    <Heart
-                        size={18}
-                        className={isFavorite ? "fill-red-500 text-red-500" : "text-gray-400"}
-                    />
-                </button>
 
                 {/* Electric badge positioned at top left of the image */}
                 {isElectric && (
@@ -102,7 +86,7 @@ const CarCard: React.FC<CarCardProps> = ({
 
                     <div className="flex items-center">
                         <Gauge size={16} className="text-gray-400 mr-2" />
-                        <span className="text-sm text-gray-600">{mileage.toLocaleString()} mi</span>
+                        <span className="text-sm text-gray-600">{mileage.toLocaleString()} km</span>
                     </div>
 
                     <div className="flex items-center">
@@ -120,13 +104,13 @@ const CarCard: React.FC<CarCardProps> = ({
                 <div className="h-px bg-gray-200 my-3"></div>
 
                 {/* View details button */}
-                <a
+                <Link
                     href={`/cars/${id}`}
                     className="flex justify-center items-center w-full py-2 px-4 bg-[#1F75FE] text-white rounded-md hover:bg-[#1f74fec4] transition-colors duration-300 font-medium"
                 >
                     View Details
                     <ChevronRight size={16} className="ml-1" />
-                </a>
+                </Link>
             </div>
         </div>
     );

@@ -70,12 +70,7 @@ const BrandsCarousel: React.FC = () => {
             <h2 className="text-3xl font-bold text-gray-800">Popular Brands</h2>
             <p className="text-gray-600 mt-2">Explore vehicles by your favorite manufacturers</p>
           </div>
-          
-          {/* View All Button */}
-          <a href="/brands" className="inline-flex items-center text-teal-500 hover:text-teal-600 font-medium">
-            View All
-            <ArrowRight size={18} className="ml-1" />
-          </a>
+
         </div>
         
         {/* Swiper Slider */}

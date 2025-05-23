@@ -2,28 +2,16 @@
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import {
-  Icon2fa,
-  IconBellRinging,
-  IconDashboard,
-  IconDashboardFilled,
-  IconDatabaseImport,
-  IconFingerprint,
-  IconKey,
-  IconLayout,
   IconLayout2,
-  IconList,
   IconLogout,
-  IconReceipt2,
-  IconSettings,
-  IconSwitchHorizontal,
-  IconTicket,
+  IconMessage2
 } from '@tabler/icons-react';
 import classes from './navbar.module.css';
+import { logout } from '@/services/authService';
 
 const data = [
   { link: '/dashboard', label: 'Dashboard', icon: IconLayout2 },
-  { link: '/dashboard/listings', label: 'Listings', icon: IconList },
-  { link: '/dashboard/promotions', label: 'Promotions', icon: IconTicket }
+  { link: '/dashboard/conversations', label: 'Conversations', icon: IconMessage2 }
 ];
 
 export function NavbarSimple() {
@@ -48,12 +36,12 @@ export function NavbarSimple() {
       </div>
 
       <div className={classes.footer}>
-        <Link href="#" className={classes.link}>
+        {/* <Link href="#" className={classes.link}>
           <IconSwitchHorizontal className={classes.linkIcon} stroke={1.5} />
           <span>Change account</span>
-        </Link>
+        </Link> */}
 
-        <Link href="#" className={classes.link}>
+        <Link href="#" className={classes.link} onClick={logout}>
           <IconLogout className={classes.linkIcon} stroke={1.5} />
           <span>Logout</span>
         </Link>

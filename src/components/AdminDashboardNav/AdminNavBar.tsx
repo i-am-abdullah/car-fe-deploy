@@ -5,17 +5,18 @@ import {
   IconLayout2,
   IconList,
   IconLogout,
+  IconMessage2,
   IconPinFilled,
   IconSwitchHorizontal,
   IconTicket,
 } from '@tabler/icons-react';
 import classes from './navbar.module.css';
+import { logout } from '@/services/authService';
 
 const data = [
   { link: '/admin/dashboard', label: 'Dashboard', icon: IconLayout2 },
   { link: '/admin/dashboard/requests', label: 'Requests', icon: IconPinFilled },
-  { link: '/admin/dashboard/listings', label: 'Listings', icon: IconList },
-  { link: '/admin/dashboard/promotions', label: 'Promotions', icon: IconTicket }
+  { link: '/admin/dashboard/conversations', label: 'Conversations', icon: IconMessage2 }
 ];
 
 export function AdminNavbar() {
@@ -40,12 +41,8 @@ export function AdminNavbar() {
       </div>
 
       <div className={classes.footer}>
-        <Link href="#" className={classes.link}>
-          <IconSwitchHorizontal className={classes.linkIcon} stroke={1.5} />
-          <span>Change account</span>
-        </Link>
 
-        <Link href="#" className={classes.link}>
+        <Link href="#" className={classes.link} onClick={logout}>
           <IconLogout className={classes.linkIcon} stroke={1.5} />
           <span>Logout</span>
         </Link>
