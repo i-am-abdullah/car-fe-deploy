@@ -18,8 +18,8 @@ const WhyChooseUs: React.FC = () => {
               {/* Safe Purchase */}
               <div className="flex items-start">
                 <div className="mr-4 mt-1">
-                  <div className="w-10 h-10 rounded-full border border-blue-200 flex items-center justify-center bg-blue-50">
-                    <Award size={20} className="text-[#1F75FE]" />
+                  <div className="w-10 h-10 rounded-full border border-[#3D1703] flex items-center justify-center bg-blue-50">
+                    <Award size={20} className="text-[#3D1703]" />
                   </div>
                 </div>
                 <div>
@@ -33,8 +33,8 @@ const WhyChooseUs: React.FC = () => {
               {/* 90 Days Warranty */}
               <div className="flex items-start">
                 <div className="mr-4 mt-1">
-                  <div className="w-10 h-10 rounded-full border border-blue-200 flex items-center justify-center bg-blue-50">
-                    <Shield size={20} className="text-[#1F75FE]" />
+                  <div className="w-10 h-10 rounded-full border border-[#3D1703] flex items-center justify-center bg-blue-50">
+                    <Shield size={20} className="text-[#3D1703]" />
                   </div>
                 </div>
                 <div>
@@ -48,8 +48,8 @@ const WhyChooseUs: React.FC = () => {
               {/* Hassle & Haggle Free */}
               <div className="flex items-start">
                 <div className="mr-4 mt-1">
-                  <div className="w-10 h-10 rounded-full border border-blue-200 flex items-center justify-center bg-blue-50">
-                    <ThumbsUp size={20} className="text-[#1F75FE]" />
+                  <div className="w-10 h-10 rounded-full border border-[#3D1703] flex items-center justify-center bg-blue-50">
+                    <ThumbsUp size={20} className="text-[#3D1703]" />
                   </div>
                 </div>
                 <div>
@@ -70,7 +70,7 @@ const WhyChooseUs: React.FC = () => {
               {/* Main image */}
               <div className="absolute inset-0">
                 <Image
-                  src="/mountain-background.jpeg" 
+                  src="/why-choose-us.jpeg" 
                   alt="Mercedes-Benz Showroom"
                   fill
                   className="object-cover rounded-lg"

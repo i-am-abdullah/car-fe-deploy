@@ -8,9 +8,9 @@ const OurStory = () => {
         {/* Text Content */}
         <div className="md:w-1/2">
           <div className="mb-4">
-            <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">Our Story</span>
+            <span className="text-[#3D1703] font-semibold text-sm uppercase tracking-wider">Our Story</span>
             <h2 className="text-3xl font-bold text-gray-900 mt-2">
-              Premium Car Marketplace Platform
+              ABOUT AUTOLEECH
             </h2>
           </div>
           <p className="text-gray-700 leading-relaxed mb-6">
@@ -31,7 +31,7 @@ const OurStory = () => {
         <div className="md:w-1/2">
           <div className="relative rounded-xl overflow-hidden shadow-2xl">
             <img
-              src="/mountain-background.jpeg"
+              src="/why-choose-us.jpeg"
               alt="Our Story"
               className="w-full h-auto object-cover"
             />

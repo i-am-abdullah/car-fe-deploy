@@ -11,12 +11,11 @@ import { Toaster } from 'react-hot-toast';
 const HomePage: React.FC = () => {
   return (
     <div className="min-h-screen">
-      <Toaster position="top-right" />
       <Navbar />
       <Hero />
       <FeaturedCars/>
       <WhyChooseUs/>
-      <BrandsCarousel/>
+      {/* <BrandsCarousel/> */}
       <HowItWorks/>
       <Footer/>
       {/* Other page sections can be added here */}

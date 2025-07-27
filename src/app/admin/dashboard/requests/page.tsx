@@ -25,11 +25,13 @@ import toast from 'react-hot-toast';
 import ReusableTable from '@/components/layout/DataTable';
 import { getAllCarListings,  updateCarListingStatus, type CarListing, 
   type CarListingResponse  } from '@/services/carListingAdminServices';
+import { useAuth } from '@/hooks/useAuth';
 
 const CarRequestsList = () => {
   const [opened, { open, close }] = useDisclosure(false);
   const [selectedCar, setSelectedCar] = useState<CarListing | null>(null);
   const [carListings, setCarListings] = useState<CarListing[]>([]);
+  const { loading: authLoading } = useAuth();
   const [loading, setLoading] = useState(true);
   const [actionLoading, setActionLoading] = useState<string | null>(null);
 
@@ -87,7 +89,6 @@ const CarRequestsList = () => {
       case 'active': return 'green';
       case 'rejected': return 'red';
       case 'pending': return 'yellow';
-      case 'draft': return 'blue';
       case 'sold': return 'purple';
       case 'inactive': return 'gray';
       default: return 'blue';
@@ -164,7 +165,7 @@ const CarRequestsList = () => {
           >
             <IconEye size={18} />
           </ActionIcon>
-          {row.status === 'draft' && (
+          {row.status === 'pending' && (
             <>
               <ActionIcon 
                 variant="subtle" 
@@ -196,7 +197,7 @@ const CarRequestsList = () => {
       <Title order={2} mb="md">Car Listing Requests</Title>
       
       <div style={{ position: 'relative', minHeight: '400px' }}>
-        <LoadingOverlay visible={loading} />
+        <LoadingOverlay visible={loading || authLoading} />
         
         <ReusableTable
           data={carListings}
@@ -391,7 +392,7 @@ const CarRequestsList = () => {
             {/* Action buttons */}
             <Group justify="right" mt="xl">
               <Button variant="outline" color="gray" onClick={close}>Close</Button>
-              {selectedCar.status === 'draft' && (
+              {selectedCar.status === 'pending' && (
                 <>
                   <Button 
                     variant="outline" 

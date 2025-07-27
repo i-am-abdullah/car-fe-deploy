@@ -43,7 +43,7 @@ const CarCardManage: React.FC<CarCardManageProps> = ({
     transmission,
     isElectric,
     isFavorite: initialFavorite,
-    status = 'draft',
+    status = 'pending',
     onEdit,
     onDelete
 }) => {
@@ -69,8 +69,7 @@ const CarCardManage: React.FC<CarCardManageProps> = ({
         switch (status.toLowerCase()) {
             case 'active': return 'bg-green-100 text-green-800';
             case 'pending': return 'bg-yellow-100 text-yellow-800';
-            case 'draft': return 'bg-gray-100 text-gray-800';
-            case 'sold': return 'bg-blue-100 text-blue-800';
+            case 'sold': return 'bg-[#3D1703] text-[#3D1703]';
             case 'inactive': return 'bg-red-100 text-red-800';
             case 'rejected': return 'bg-red-100 text-red-800';
             default: return 'bg-gray-100 text-gray-800';
@@ -99,7 +98,7 @@ const CarCardManage: React.FC<CarCardManageProps> = ({
                 {/* Electric badge if applicable */}
                 {isElectric && (
                     <div className="absolute top-12 left-3 z-10">
-                        <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-blue-100 text-[#1F75FE] shadow-md">
+                        <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-[#3D1703] text-[#3D1703] shadow-md">
                             <Zap size={12} className="mr-1" />
                             Electric
                         </span>
@@ -107,7 +106,7 @@ const CarCardManage: React.FC<CarCardManageProps> = ({
                 )}
 
                 {/* Price tag positioned at bottom left of the image */}
-                <div className="absolute bottom-0 left-0 bg-[#1F75FE] text-white px-3 py-1 rounded-tr-md font-bold shadow-md z-10">
+                <div className="absolute bottom-0 left-0 bg-[#3D1703] text-white px-3 py-1 rounded-tr-md font-bold shadow-md z-10">
                     ${price.toLocaleString()}
                 </div>
             </div>
@@ -153,7 +152,7 @@ const CarCardManage: React.FC<CarCardManageProps> = ({
                 <div className="flex justify-between">
                     <button
                         onClick={handleEdit}
-                        className="flex justify-center items-center py-2 px-4 bg-[#1F75FE] text-white rounded-md hover:bg-[#1f74fec4] transition-colors duration-300 font-medium flex-1 mr-2"
+                        className="flex justify-center items-center py-2 px-4 bg-[#3D1703] text-white rounded-md hover:bg-[#1f74fec4] transition-colors duration-300 font-medium flex-1 mr-2"
                     >
                         <Edit size={16} className="mr-1" />
                         Edit

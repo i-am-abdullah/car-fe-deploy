@@ -5,9 +5,11 @@ import Link from 'next/link';
 import { MessageSquare, Car, Users, Clock } from 'lucide-react';
 import AdminChatService from '@/services/AdminChatService';
 import { AdminConversation } from '@/services/AdminChatService';
+import { useAuth } from '@/hooks/useAuth';
 
 export default function AdminConversationsPage() {
   const [conversations, setConversations] = useState<AdminConversation[]>([]);
+    const { loading: authLoading } = useAuth();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -56,11 +58,11 @@ export default function AdminConversationsPage() {
     });
   };
 
-  if (loading) {
+  if (loading || authLoading) {
     return (
       <div className="flex justify-center items-center min-h-screen bg-gray-50">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#3D1703] mx-auto mb-4"></div>
           <p className="text-gray-600">Loading conversations...</p>
         </div>
       </div>
@@ -85,8 +87,8 @@ export default function AdminConversationsPage() {
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="p-2 bg-blue-100 rounded-lg">
-                <MessageSquare className="w-6 h-6 text-blue-600" />
+              <div className="p-2 bg-[#3D1703] rounded-lg">
+                <MessageSquare className="w-6 h-6 text-[#3D1703]" />
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-gray-900">Chat Monitor</h1>
@@ -94,7 +96,7 @@ export default function AdminConversationsPage() {
               </div>
             </div>
             <div className="bg-blue-50 px-4 py-2 rounded-lg">
-              <span className="text-blue-700 font-medium">{conversations.length} Active Conversations</span>
+              <span className="text-[#3D1703] font-medium">{conversations.length} Active Conversations</span>
             </div>
           </div>
         </div>
@@ -145,8 +147,8 @@ export default function AdminConversationsPage() {
                       <tr key={conversation.id} className="hover:bg-gray-50">
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center">
-                            <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
-                              <Car className="w-5 h-5 text-blue-600" />
+                            <div className="w-10 h-10 rounded-full bg-[#3D1703] flex items-center justify-center flex-shrink-0">
+                              <Car className="w-5 h-5 text-[#3D1703]" />
                             </div>
                             <div className="ml-4">
                               <div className="text-sm font-medium text-gray-900">{carName}</div>
@@ -182,7 +184,7 @@ export default function AdminConversationsPage() {
                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                           <Link 
                             href={`/admin/dashboard/conversations/${conversation.id}`}
-                            className="text-blue-600 hover:text-blue-900 transition-colors"
+                            className="text-[#3D1703] hover:text-[#3D1703] transition-colors"
                           >
                             View Chat
                           </Link>

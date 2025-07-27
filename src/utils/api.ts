@@ -49,10 +49,15 @@ export async function apiRequest<T = any>({
     }
 
     const response = await axios.request<T>(config)
+
     return response.data
   } catch (err: any) {
+    console.log(err);
+
     // if 401 and we haven't just retried via refresh flow, do it now
     if (err.response?.status === 401) {
+      console.log("error is ", err.response?.status);
+
       try {
         const newToken = await doRefresh()
         // retry original with fresh token
@@ -64,12 +69,20 @@ export async function apiRequest<T = any>({
         throw new Error('Authentication expired')
       }
     }
+    if (err.response?.status) {
+      const msg =
+        err.response?.data?.message ||
+        err.message ||
+        'Something went wrong'        
+      toast.error(msg)
+      throw new Error(msg)
+    }
 
     const msg =
       err.response?.data?.message ||
       err.message ||
       'Something went wrong'
-    toast.error(msg)
+    window.location.href = '/login';
     throw new Error(msg)
   }
 }

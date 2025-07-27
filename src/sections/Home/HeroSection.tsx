@@ -10,7 +10,7 @@ const Hero = () => {
           {/* Background image */}
           <div className="absolute inset-0">
             <Image 
-              src="/mountain-background.jpeg" 
+              src="/hero.jpeg" 
               alt="Luxury car in mountains" 
               fill
               className="object-cover"
@@ -22,12 +22,12 @@ const Hero = () => {
           
           {/* Content */}
           <div className="relative h-full flex flex-col justify-center items-center text-center px-4 md:px-20">
-            <h1 className="text-4xl md:text-6xl lg:text-6xl font-bold text-white mb-4 hero-title">Premier Auto Sales</h1>
+            <h1 className="text-4xl md:text-6xl lg:text-6xl font-bold text-white mb-4 hero-title">AUTOLEECH</h1>
             <p className="text-lg md:text-xl text-white mb-8 font-sans">Car dealerships may sell new cars from one or several manufacturers</p>
             
             {/* Find Car Button */}
             <div className="mb-10">
-              <button className="bg-[#1F75FE] hover:bg-[#1E90FF] text-white px-8 py-3 rounded-md flex items-center cursor-pointer">
+              <button className="bg-[#3D1703] hover:bg-[#1E90FF] text-white px-8 py-3 rounded-md flex items-center cursor-pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />
                 </svg>
@@ -41,7 +41,7 @@ const Hero = () => {
               </div>
 
               <div className="text-white">
-                Trust Rating 5.0 | 2348 Reviews
+               Rating 5.0 out of 5.0
               </div>
               <div className="flex">
                 {[1, 2, 3, 4, 5].map((star) => (
@@ -57,7 +57,7 @@ const Hero = () => {
               {[1, 2, 3].map((dot, index) => (
                 <button 
                   key={dot} 
-                  className={`h-2.5 w-2.5 rounded-full ${index === 0 ? 'bg-[#1F75FE]' : 'bg-white/50'}`}
+                  className={`h-2.5 w-2.5 rounded-full ${index === 0 ? 'bg-[#3D1703]' : 'bg-white/50'}`}
                   aria-label={`Go to slide ${dot}`}
                 />
               ))}

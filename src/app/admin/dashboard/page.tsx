@@ -10,7 +10,7 @@ import { deleteAdminCarListing, getAdminCarListings } from '@/services/carListin
 import CarCardAdmin from '@/components/ui/AdminCard';
 
 export default function CarListingsPage() {
-  const { loading: authLoading } = useAuth('/login');
+  const { loading: authLoading } = useAuth();
   const [carListings, setCarListings] = useState<any>([]);
   const [loading, setLoading] = useState(true);
   const [modalOpened, setModalOpened] = useState(false);
@@ -85,7 +85,7 @@ export default function CarListingsPage() {
       transmission: car.additionalDetail?.transmission || 'Unknown',
       isElectric,
       isFavorite: false,
-      status: car.status || 'draft',
+      status: car.status || 'pending',
       onEdit: handleEditCar,
       onDelete: handleDeleteCar
     };

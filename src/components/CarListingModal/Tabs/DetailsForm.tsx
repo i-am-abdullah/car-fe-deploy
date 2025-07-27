@@ -4,16 +4,15 @@
 import { useState, useEffect } from 'react';
 import { UseFormReturnType } from '@mantine/form';
 import { Grid, Select, NumberInput, TextInput, Textarea, Checkbox, Stack, MultiSelect } from '@mantine/core';
-import { CarFormValues, RegistrationCity, Feature } from '@/types/car';
 import { getRegistrationCities, getFeatures } from '@/services/carListingServices';
 
 interface DetailsFormProps {
-  form: UseFormReturnType<CarFormValues>;
+  form: UseFormReturnType<any>;
 }
 
 export function DetailsForm({ form }: DetailsFormProps) {
-  const [registrationCities, setRegistrationCities] = useState<RegistrationCity[]>([]);
-  const [features, setFeatures] = useState<Feature[]>([]);
+  const [registrationCities, setRegistrationCities] = useState<any[]>([]);
+  const [features, setFeatures] = useState<any[]>([]);
   const [loadingCities, setLoadingCities] = useState(true);
   const [loadingFeatures, setLoadingFeatures] = useState(true);
 

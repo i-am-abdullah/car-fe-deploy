@@ -128,7 +128,7 @@ body {
 
 .thumbnail.active {
   opacity: 1;
-  border: 2px solid #1F75FE;
+  border: 2px solid #3D1703;
 }
 
 .thumbnail img {
@@ -208,7 +208,7 @@ body {
 }
 
 .btn-primary {
-  background-color: #1F75FE;
+  background-color: #3D1703;
   color: white;
   border: none;
 }
@@ -219,8 +219,8 @@ body {
 
 .btn-outline {
   background-color: transparent;
-  border: 1px solid #1F75FE;
-  color: #1F75FE;
+  border: 1px solid #3D1703;
+  color: #3D1703;
 }
 
 .btn-outline:hover {
@@ -248,7 +248,7 @@ body {
 .read-more-btn {
   background: none;
   border: none;
-  color: #1F75FE;
+  color: #3D1703;
   padding: 0;
   font-size: 14px;
   cursor: pointer;
@@ -280,7 +280,7 @@ body {
   width: 20px;
   height: 20px;
   margin-right: 10px;
-  color: #1F75FE;
+  color: #3D1703;
 }
 
 .feature-text {
@@ -355,7 +355,7 @@ body {
 
 .price-value {
   font-weight: 700;
-  color: #1F75FE;
+  color: #3D1703;
 }
 
 /* Sidebar.css */
@@ -405,7 +405,7 @@ body {
 }
 
 .contact-btn.email {
-  background-color: #1F75FE;
+  background-color: #3D1703;
   color: white;
 }
 
@@ -444,7 +444,7 @@ body {
 .submit-btn {
   width: 100%;
   padding: 10px;
-  background-color: #1F75FE;
+  background-color: #3D1703;
   color: white;
   border: none;
   border-radius: 4px;
@@ -483,7 +483,7 @@ body {
 
 .toggle-icon {
   font-size: 20px;
-  color: #1F75FE;
+  color: #3D1703;
 }
 
 .faq-answer {
@@ -527,7 +527,7 @@ body {
 }
 
 .car-card-price {
-  color: #1F75FE;
+  color: #3D1703;
   font-weight: 700;
   margin-bottom: 5px;
   font-size: 14px;
@@ -553,7 +553,7 @@ body {
 
 .view-details-link {
   font-size: 12px;
-  color: #1F75FE;
+  color: #3D1703;
   text-decoration: none;
   font-weight: 500;
 }

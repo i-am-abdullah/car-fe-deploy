@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react';
 import { Modal, Button, Group, Tabs, LoadingOverlay } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { CarListing, CarFormValues } from '@/types/car';
+import { CarListing } from '@/services/carListingAdminServices';
 import { BasicInformationForm } from './Tabs/BasicInformationForm';
 import { ImagesSection } from './Tabs/ImagesSection';
 import { DetailsForm } from './Tabs/DetailsForm';
@@ -20,7 +20,7 @@ interface CarListingModalProps {
   onSuccess: () => void;
 }
 
-// Define tab structure for sequential navigation
+// Define tab structure for navigation
 const TABS = [
   { value: 'basic', label: 'Basic Information' },
   { value: 'details', label: 'Details' },
@@ -39,27 +39,69 @@ export function CarListingModal({
   const [isFormComplete, setIsFormComplete] = useState(false);
   const isEditing = Boolean(initialData?.id);
   
-  const form = useForm<CarFormValues>({
-    initialValues: getInitialValues(initialData),
-    validate: {
-      make_id: (value) => !value ? 'Car make is required' : null,
-      model_id: (value) => !value ? 'Car model is required' : null,
-      year_id: (value) => !value ? 'Year is required' : null,
-      variant_id: (value) => !value ? 'Variant is required' : null,
-      price: (value) => value <= 0 ? 'Price must be greater than 0' : null,
-      meter_reading: (value) => value < 0 ? 'Meter reading cannot be negative' : null,
-      color: (value) => !value ? 'Color is required' : null,
-      location: (value) => !value ? 'Location is required' : null,
-      registration_city_id: (value) => !value ? 'Registration city is required' : null,
-    },
+  const form = useForm<any>({
+    initialValues: getInitialValues(initialData!),
   });
 
-  // Reset form when modal opens with initialData
+  // All required fields for the entire form
+  const requiredFields = [
+    'make_id',
+    'model_id', 
+    'year_id',
+    'variant_id',
+    'price',
+    'meter_reading',
+    'color',
+    'location',
+    'registration_city_id'
+  ];
+
+  // Validation rules
+  const validationRules = {
+    make_id: (value: any) => !value ? 'Car make is required' : null,
+    model_id: (value: any) => !value ? 'Car model is required' : null,
+    year_id: (value: any) => !value ? 'Year is required' : null,
+    variant_id: (value: any) => !value ? 'Variant is required' : null,
+    price: (value: any) => {
+      if (!value || value <= 0) return 'Price must be greater than 0';
+      return null;
+    },
+    meter_reading: (value: any) => {
+      if (value === undefined || value === null || value === '') return 'Meter reading is required';
+      if (value < 0) return 'Meter reading cannot be negative';
+      return null;
+    },
+    color: (value: any) => !value ? 'Color is required' : null,
+    location: (value: any) => !value ? 'Location is required' : null,
+    registration_city_id: (value: any) => !value ? 'Registration city is required' : null,
+  };
+
+  // Check if all required fields are filled
+  const validateAllFields = () => {
+    const errors: Record<string, string> = {};
+    const values = form.values;
+    
+    requiredFields.forEach(field => {
+      const validator = validationRules[field as keyof typeof validationRules];
+      if (validator) {
+        const error = validator(values[field]);
+        if (error) {
+          errors[field] = error;
+        }
+      }
+    });
+
+    return { hasErrors: Object.keys(errors).length > 0, errors };
+  };
+
+  // Reset form when modal opens
   useEffect(() => {
     if (opened) {
-      const initialValues = getInitialValues(initialData);
+      const initialValues = getInitialValues(initialData!);
       form.setValues(initialValues);
       form.resetDirty(initialValues);
+      form.clearErrors();
+      setIsFormComplete(false);
       
       console.log('Setting form values:', initialValues);
     }
@@ -74,28 +116,64 @@ export function CarListingModal({
     }
   }, [initialData, opened]);
 
-  // Check if form is complete
+  // Check if form is complete whenever form values change
   useEffect(() => {
-    checkFormCompleteness();
+    const validation = validateAllFields();
+    setIsFormComplete(!validation.hasErrors);
   }, [form.values]);
 
-  const checkFormCompleteness = () => {
-    // Validate all form fields
-    const validation = form.validate();
-    setIsFormComplete(!validation.hasErrors);
-  };
+  const handleSubmit = async (values: any) => {
+    // Validate all fields before submission
+    const validation = validateAllFields();
+    
+    if (validation.hasErrors) {
+      form.setErrors(validation.errors);
+      
+      // Create a user-friendly error message
+      const fieldLabels: Record<string, string> = {
+        make_id: 'Car Make',
+        model_id: 'Car Model', 
+        year_id: 'Year',
+        variant_id: 'Variant',
+        price: 'Price',
+        meter_reading: 'Meter Reading',
+        color: 'Color',
+        location: 'Location',
+        registration_city_id: 'Registration City'
+      };
+      
+      const missingFields = Object.keys(validation.errors).map(field => 
+        fieldLabels[field] || field
+      );
+      
+      toast.error(`Please fill all required fields: ${missingFields.join(', ')}`);
+      
+      // Navigate to the first tab that has errors
+      const tabFieldMapping = {
+        basic: ['make_id', 'model_id', 'year_id', 'variant_id', 'price'],
+        details: ['meter_reading', 'color', 'location'],
+        specifications: ['registration_city_id'],
+        images: []
+      };
+      
+      for (const [tabName, fields] of Object.entries(tabFieldMapping)) {
+        if (fields.some(field => validation.errors[field])) {
+          setActiveTab(tabName);
+          break;
+        }
+      }
+      
+      return;
+    }
 
-  const handleSubmit = async (values: CarFormValues) => {
     setSubmitting(true);
     try {
       const carData = createCarData(values);
       
       if (initialData?.id) {
-        // Update existing listing
         await updateCarListing(initialData.id, carData);
         toast.success('Car listing updated successfully');
       } else {
-        // Create new listing
         await createCarListing(carData);
         toast.success('Car listing created successfully');
       }
@@ -112,46 +190,24 @@ export function CarListingModal({
 
   // Move to the next tab
   const moveToNextTab = (e: React.MouseEvent) => {
-    e.preventDefault(); // Prevent form submission
+    e.preventDefault();
     const currentTabIndex = TABS.findIndex(tab => tab.value === activeTab);
     if (currentTabIndex < TABS.length - 1) {
-      // Validate current tab fields before moving to next
-      let hasErrors = false;
-      
-      switch (activeTab) {
-        case 'basic':
-          hasErrors = !!form.validateField('make_id').error || 
-                     !!form.validateField('model_id').error ||
-                     !!form.validateField('year_id').error ||
-                     !!form.validateField('variant_id').error ||
-                     !!form.validateField('price').error;
-          break;
-        case 'details':
-          hasErrors = !!form.validateField('meter_reading').error ||
-                     !!form.validateField('color').error ||
-                     !!form.validateField('location').error;
-          break;
-        case 'specifications':
-          hasErrors = !!form.validateField('registration_city_id').error;
-          break;
-      }
-      
-      if (!hasErrors) {
-        setActiveTab(TABS[currentTabIndex + 1].value);
-      } else {
-        toast.error('Please fill all required fields before proceeding');
-      }
+      setActiveTab(TABS[currentTabIndex + 1].value);
     }
   };
 
   // Move to the previous tab
   const moveToPrevTab = (e: React.MouseEvent) => {
-    e.preventDefault(); // Prevent form submission
+    e.preventDefault();
     const currentTabIndex = TABS.findIndex(tab => tab.value === activeTab);
     if (currentTabIndex > 0) {
       setActiveTab(TABS[currentTabIndex - 1].value);
     }
   };
+
+  const currentTabIndex = TABS.findIndex(tab => tab.value === activeTab);
+  const isLastTab = currentTabIndex === TABS.length - 1;
 
   return (
     <Modal
@@ -163,37 +219,43 @@ export function CarListingModal({
       <LoadingOverlay visible={submitting} />
       
       <form onSubmit={(e) => {
-        // Only allow form submission when the submit button is clicked explicitly
-        // if (!e.nativeEvent.submitter || 
-        //     e.nativeEvent.submitter.getAttribute('type') !== 'submit') {
-        //   e.preventDefault();
-        //   return;
-        // }
-        form.onSubmit(handleSubmit)(e);
+        e.preventDefault();
+        handleSubmit(form.values);
       }}>
         <Tabs value={activeTab} onChange={setActiveTab}>
           <Tabs.List>
             {TABS.map((tab) => (
-              <Tabs.Tab key={tab.value} value={tab.value}>{tab.label}</Tabs.Tab>
+              <Tabs.Tab key={tab.value} value={tab.value}>
+                {tab.label}
+              </Tabs.Tab>
             ))}
           </Tabs.List>
 
           <Tabs.Panel value="basic" pt="md">
-            <BasicInformationForm form={form} isEditing={isEditing} />
+            <BasicInformationForm 
+              form={form} 
+              isEditing={isEditing}
+            />
           </Tabs.Panel>
 
           <Tabs.Panel value="details" pt="md">
-            <DetailsForm form={form} />
+            <DetailsForm 
+              form={form}
+            />
           </Tabs.Panel>
 
           <Tabs.Panel value="specifications" pt="md">
-            <SpecificationsForm form={form} />
+            <SpecificationsForm 
+              form={form}
+            />
           </Tabs.Panel>
 
           <Tabs.Panel value="images" pt="md">
             <ImagesSection
               images={form.values.images}
-              onChange={(images) => form.setFieldValue('images', images)}
+              onChange={(images) => {
+                form.setFieldValue('images', images);
+              }}
             />
           </Tabs.Panel>
         </Tabs>
@@ -213,8 +275,12 @@ export function CarListingModal({
               Cancel
             </Button>
             
-            {activeTab !== TABS[TABS.length - 1].value ? (
-              <Button onClick={moveToNextTab} type="button" disabled={submitting}>
+            {!isLastTab ? (
+              <Button 
+                onClick={moveToNextTab} 
+                type="button" 
+                disabled={submitting}
+              >
                 Next
               </Button>
             ) : (
@@ -222,7 +288,8 @@ export function CarListingModal({
                 type="submit" 
                 loading={submitting} 
                 disabled={!isFormComplete || submitting}
-                title={!isFormComplete ? "Please complete all required fields" : ""}
+                title={!isFormComplete ? "Please fill all required fields to create the listing" : ""}
+                color={isFormComplete ? 'blue' : 'gray'}
               >
                 {initialData ? 'Update' : 'Create'} Listing
               </Button>

@@ -4,19 +4,18 @@
 import { useState, useEffect } from 'react';
 import { UseFormReturnType } from '@mantine/form';
 import { Grid, Select, NumberInput, TextInput, Stack } from '@mantine/core';
-import { CarFormValues, CarMake, CarModel, CarYear, CarVariant } from '@/types/car';
 import { getCarMakes, getCarModelsByMakeId, getCarYearsByMakeAndModelIds, getCarVariantsByMakeModelAndYearIds } from '@/services/carListingServices';
 
 interface BasicInformationFormProps {
-  form: UseFormReturnType<CarFormValues>;
+  form: UseFormReturnType<any>;
   isEditing?: boolean;
 }
 
 export function BasicInformationForm({ form, isEditing }: BasicInformationFormProps) {
-  const [makes, setMakes] = useState<CarMake[]>([]);
-  const [models, setModels] = useState<CarModel[]>([]);
-  const [years, setYears] = useState<CarYear[]>([]);
-  const [variants, setVariants] = useState<CarVariant[]>([]);
+  const [makes, setMakes] = useState<any[]>([]);
+  const [models, setModels] = useState<any[]>([]);
+  const [years, setYears] = useState<any[]>([]);
+  const [variants, setVariants] = useState<any[]>([]);
 
   const [loadingMakes, setLoadingMakes] = useState(true);
   const [loadingModels, setLoadingModels] = useState(false);

@@ -10,7 +10,7 @@ import CarCardManage from '@/components/ui/DashboardCard';
 import { useAuth } from '@/hooks/useAuth';
 
 export default function CarListingsPage() {
-  const { loading: authLoading } = useAuth('/login');
+  const { loading: authLoading } = useAuth();
   const [carListings, setCarListings] = useState<any>([]);
   const [loading, setLoading] = useState(true);
   const [modalOpened, setModalOpened] = useState(false);

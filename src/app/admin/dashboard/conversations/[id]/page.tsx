@@ -4,12 +4,13 @@ import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Car, User, Clock, MessageSquare, Users, RefreshCw } from 'lucide-react';
 import adminChatService, { AdminMessage, AdminConversation } from '@/services/AdminChatService';
+import { useAuth } from '@/hooks/useAuth';
 
 export default function AdminChatPage() {
   const { id } = useParams();
   const router = useRouter();
   const conversationId = Array.isArray(id) ? id[0] : id as string;
-  
+    const { loading: authLoading } = useAuth();
   const [messages, setMessages] = useState<AdminMessage[]>([]);
   const [conversation, setConversation] = useState<AdminConversation | null>(null);
   const [loading, setLoading] = useState(true);
@@ -98,11 +99,11 @@ export default function AdminChatPage() {
     return groups;
   };
 
-  if (loading) {
+  if (loading || authLoading) {
     return (
       <div className="flex justify-center items-center min-h-screen bg-gray-50">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-500 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-[#3D1703] mx-auto mb-4"></div>
           <p className="text-gray-600 font-medium">Loading conversation...</p>
         </div>
       </div>
@@ -121,7 +122,7 @@ export default function AdminChatPage() {
           <div className="space-y-3">
             <button
               onClick={handleRefresh}
-              className="w-full px-6 py-3 bg-blue-500 text-white font-medium rounded-xl hover:bg-blue-600 transition-colors"
+              className="w-full px-6 py-3 bg-[#3D1703] text-white font-medium rounded-xl hover:bg-[#3D1703] transition-colors"
             >
               Try Again
             </button>
@@ -158,7 +159,7 @@ export default function AdminChatPage() {
             </Link>
             
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center shadow-md">
+              <div className="w-10 h-10 bg-[#3D1703] rounded-full flex items-center justify-center shadow-md">
                 <Car className="text-white" size={20} />
               </div>
               
@@ -184,7 +185,7 @@ export default function AdminChatPage() {
               className={`p-2 rounded-lg transition-colors ${
                 refreshing 
                   ? 'bg-gray-100 text-gray-400 cursor-not-allowed' 
-                  : 'bg-blue-50 text-blue-600 hover:bg-blue-100'
+                  : 'bg-blue-50 text-[#3D1703] hover:bg-[#3D1703]'
               }`}
             >
               <RefreshCw 

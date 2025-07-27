@@ -5,6 +5,7 @@ import { theme } from "@/styles/theme";
 import "./globals.css";
 import "@mantine/core/styles.css";
 import '@mantine/dates/styles.css';
+import { Toaster } from "react-hot-toast";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -26,6 +27,7 @@ export default function RootLayout({
         <ColorSchemeScript />
       </head>
       <body className={`${poppins.variable} antialiased`}>
+              <Toaster position="top-right" />
         <MantineProvider theme={theme}>
           {children}
         </MantineProvider>

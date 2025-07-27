@@ -53,7 +53,7 @@ const CarCard: React.FC<CarCardProps> = ({
                 {/* Electric badge positioned at top left of the image */}
                 {isElectric && (
                     <div className="absolute top-3 left-3 z-10">
-                        <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-blue-100 text-[#1F75FE] shadow-md">
+                        <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-[#3D1703] text-[#3D1703] shadow-md">
                             <Zap size={12} className="mr-1" />
                             Electric
                         </span>
@@ -61,7 +61,7 @@ const CarCard: React.FC<CarCardProps> = ({
                 )}
 
                 {/* Price tag positioned at bottom left of the image */}
-                <div className="absolute bottom-0 left-0 bg-[#1F75FE] text-white px-3 py-1 rounded-tr-md font-bold shadow-md z-10">
+                <div className="absolute bottom-0 left-0 bg-[#3D1703] text-white px-3 py-1 rounded-tr-md font-bold shadow-md z-10">
                     ${price.toLocaleString()}
                 </div>
             </div>
@@ -106,7 +106,7 @@ const CarCard: React.FC<CarCardProps> = ({
                 {/* View details button */}
                 <Link
                     href={`/cars/${id}`}
-                    className="flex justify-center items-center w-full py-2 px-4 bg-[#1F75FE] text-white rounded-md hover:bg-[#1f74fec4] transition-colors duration-300 font-medium"
+                    className="flex justify-center items-center w-full py-2 px-4 bg-[#3D1703] text-white rounded-md hover:bg-[#1f74fec4] transition-colors duration-300 font-medium"
                 >
                     View Details
                     <ChevronRight size={16} className="ml-1" />

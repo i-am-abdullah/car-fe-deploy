@@ -8,10 +8,10 @@ interface AchievementProps{
 
 const Achievements:React.FC<AchievementProps> = ({achievements}) => {
   return (
-    <section className="py-16 bg-gradient-to-b from-blue-50 to-white">
+    <section className="py-16 bg-gray-50">
     <div className="container mx-auto px-6">
       <div className="text-center max-w-2xl mx-auto mb-12">
-        <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">Our Impact</span>
+        <span className="text-[#3D1703] font-semibold text-sm uppercase tracking-wider">Our Impact</span>
         <h2 className="text-3xl font-bold text-gray-900 mt-2 mb-4">
           Milestones & Achievements
         </h2>

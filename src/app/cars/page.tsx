@@ -128,7 +128,7 @@ const CarListingsPage = () => {
 
         {loading ? (
           <div className="flex justify-center items-center h-64">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#1F75FE]"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#3D1703]"></div>
           </div>
         ) : error ? (
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6" role="alert">
@@ -176,7 +176,7 @@ const CarListingsPage = () => {
                           onClick={() => handlePageChange(page as number)}
                           className={`flex items-center justify-center w-10 h-10 rounded-md mx-1 ${
                             currentPage === page
-                              ? 'bg-[#1F75FE] text-white'
+                              ? 'bg-[#3D1703] text-white'
                               : 'bg-white text-gray-700 hover:bg-gray-100'
                           } border`}
                           aria-label={`Page ${page}`}

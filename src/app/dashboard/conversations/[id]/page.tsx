@@ -224,7 +224,7 @@ export default function ChatPage() {
     return (
       <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-500 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-[#3D1703] mx-auto mb-4"></div>
           <p className="text-gray-600 font-medium">Loading conversation...</p>
         </div>
       </div>
@@ -242,7 +242,7 @@ export default function ChatPage() {
           <p className="text-gray-600 mb-6">{error}</p>
           <Link 
             href="/dashboard/conversations"
-            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-medium rounded-xl hover:from-blue-600 hover:to-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#3D1703] to-[#3D1703] text-white font-medium rounded-xl hover:from-[#3D1703] hover:to-[#3D1703] transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
           >
             <ArrowLeft className="mr-2" size={18} />
             Back to Conversations
@@ -272,18 +272,18 @@ export default function ChatPage() {
             </Link>
             
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-md">
+              <div className="w-10 h-10 bg-gradient-to-br from-[#3D1703] to-[#3D1703] rounded-full flex items-center justify-center shadow-md">
                 <Car className="text-white" size={20} />
               </div>
               
               <div>
                 <h1 className="font-semibold text-lg text-gray-800">{carName}</h1>
                 {otherUserTyping && (
-                  <div className="flex items-center space-x-1 text-blue-500">
+                  <div className="flex items-center space-x-1 text-[#3D1703]">
                     <div className="flex space-x-1">
-                      <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce"></div>
-                      <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
-                      <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                      <div className="w-1.5 h-1.5 bg-[#3D1703] rounded-full animate-bounce"></div>
+                      <div className="w-1.5 h-1.5 bg-[#3D1703] rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                      <div className="w-1.5 h-1.5 bg-[#3D1703] rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
                     </div>
                     <span className="text-sm font-medium">Typing...</span>
                   </div>
@@ -304,8 +304,8 @@ export default function ChatPage() {
         {messageGroups.length === 0 ? (
           <div className="flex items-center justify-center h-full">
             <div className="text-center p-8 bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg max-w-md border border-white/20">
-              <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Send className="text-blue-500" size={32} />
+              <div className="w-20 h-20 bg-gradient-to-br from-[#3D1703] to-[#3D1703] rounded-full flex items-center justify-center mx-auto mb-4">
+                <Send className="text-[#3D1703]" size={32} />
               </div>
               <h2 className="text-xl font-bold text-gray-800 mb-2">Start the conversation</h2>
               <p className="text-gray-600">Send a message to begin chatting about this vehicle.</p>
@@ -349,7 +349,7 @@ export default function ChatPage() {
                         <div 
                           className={`px-4 py-3 rounded-2xl shadow-sm transition-all duration-200 ${
                             isMine 
-                              ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-br-md shadow-blue-200' 
+                              ? 'bg-gradient-to-r from-[#3D1703] to-[#3D1703] text-white rounded-br-md shadow-[#3D1703]' 
                               : 'bg-white text-gray-800 rounded-bl-md shadow-gray-200 border border-gray-100'
                           } ${isConsecutive ? (isMine ? 'rounded-tr-2xl' : 'rounded-tl-2xl') : ''}`}
                         >
@@ -357,7 +357,7 @@ export default function ChatPage() {
                           
                           {/* Time and Status */}
                           <div className={`flex items-center justify-end mt-1 space-x-1 ${
-                            isMine ? 'text-blue-100' : 'text-gray-500'
+                            isMine ? 'text-[#3D1703]' : 'text-gray-500'
                           }`}>
                             <span className="text-xs font-medium">
                               {formatMessageTime(message.created_at)}
@@ -365,9 +365,9 @@ export default function ChatPage() {
                             {isMine && (
                               <div className="flex">
                                 {message.is_read ? (
-                                  <CheckCheck size={14} className="text-blue-200" />
+                                  <CheckCheck size={14} className="text-[#3D1703]" />
                                 ) : (
-                                  <Check size={14} className="text-blue-300" />
+                                  <Check size={14} className="text-[#3D1703]" />
                                 )}
                               </div>
                             )}
@@ -397,7 +397,7 @@ export default function ChatPage() {
         <form onSubmit={handleSendMessage} className="flex items-end space-x-3">
           {/* Input Container */}
           <div className="flex-grow relative">
-            <div className="flex items-center bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-200 focus-within:ring-2 focus-within:ring-blue-500/20 focus-within:border-blue-300">
+            <div className="flex items-center bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-200 focus-within:ring-2 focus-within:ring-[#3D1703]/20 focus-within:border-[#3D1703]">
               {/* Attachment Button */}
               
               {/* Text Input */}
@@ -424,7 +424,7 @@ export default function ChatPage() {
             
             {/* Sending Status */}
             {sending && (
-              <div className="absolute -top-8 left-0 bg-blue-500 text-white text-xs px-3 py-1 rounded-full shadow-lg">
+              <div className="absolute -top-8 left-0 bg-[#3D1703] text-white text-xs px-3 py-1 rounded-full shadow-lg">
                 <div className="flex items-center space-x-2">
                   <div className="w-3 h-3 border border-white border-t-transparent rounded-full animate-spin"></div>
                   <span>Sending...</span>
@@ -440,7 +440,7 @@ export default function ChatPage() {
             className={`p-3 rounded-2xl transition-all duration-200 shadow-lg transform ${
               sending || !newMessage.trim()
                 ? 'bg-gray-300 text-gray-500 cursor-not-allowed shadow-sm' 
-                : 'bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:from-blue-600 hover:to-blue-700 hover:shadow-xl hover:-translate-y-0.5 active:scale-95'
+                : 'bg-gradient-to-r from-[#3D1703] to-[#3D1703] text-white hover:from-[#3D1703] hover:to-[#3D1703] hover:shadow-xl hover:-translate-y-0.5 active:scale-95'
             }`}
           >
             <Send size={20} />

@@ -67,7 +67,7 @@ const CarGallery: React.FC<CarGalleryProps> = ({ images }) => {
           {images.map((image, index) => (
             <div 
               key={index}
-              className={`thumbnail cursor-pointer flex-shrink-0 w-20 h-20 border-2 rounded overflow-hidden ${index === currentImage ? 'border-blue-500' : 'border-transparent'}`}
+              className={`thumbnail cursor-pointer flex-shrink-0 w-20 h-20 border-2 rounded overflow-hidden ${index === currentImage ? 'border-[#3D1703]' : 'border-transparent'}`}
               onClick={() => handleThumbnailClick(index)}
             >
               <img 

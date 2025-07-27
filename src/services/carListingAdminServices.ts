@@ -9,9 +9,9 @@ export interface CarListingResponse {
 
 export interface CarListing {
   id: string;
-  status: 'draft' | 'pending' | 'active' | 'sold' | 'inactive' | 'rejected';
+  status: 'pending' | 'active' | 'sold' | 'inactive' | 'rejected' ;
   meter_reading: number;
-  price: string;
+  price: string |number;
   color: string;
   location: string;
   listing_date: string;
@@ -66,12 +66,7 @@ export interface CarListing {
     updated_at: string;
   };
   features: any[];
-  images: {
-    id: string;
-    image_url: string;
-    created_at: string;
-    updated_at: string;
-  }[];
+  images: any[];
   additionalDetail: {
     id: string;
     engine_type: string;

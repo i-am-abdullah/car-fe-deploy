@@ -26,13 +26,12 @@ export default function SignupPage() {
     email: '',
     password: '',
   });
-  const [profileFile, setProfileFile] = useState<FileWithPath>();
 
   const handleChange = (key: string, val: any) =>
     setForm((f) => ({ ...f, [key]: val }));
 
   const handleSubmit = async () => {
-    await signup({ ...form, profileFile });
+    await signup(form);
     // on success → router.push('/login') or so
   };
 
@@ -85,15 +84,6 @@ export default function SignupPage() {
           value={form.password}
           onChange={(v) => handleChange('password', v)}
           mt="md"
-        />
-
-        <Text fw={500} mt="md">
-          Profile Picture
-        </Text>
-        <ImageUpload
-          initialFiles={profileFile ? [profileFile] : []}
-          maxFiles={1}
-          onChange={(files) => setProfileFile(files[0])}
         />
 
         <Group justify="right" mt="xl">

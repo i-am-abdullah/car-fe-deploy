@@ -11,7 +11,7 @@ const Values:React.FC<ValueProps> = ({values}) => {
     <section className="py-16 bg-gray-50">
     <div className="container mx-auto px-6">
       <div className="text-center max-w-2xl mx-auto mb-12">
-        <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">Why Choose Us</span>
+        <span className="text-[#3D1703] font-semibold text-sm uppercase tracking-wider">Why Choose Us</span>
         <h2 className="text-3xl font-bold text-gray-900 mt-2 mb-4">
           Commitment to Excellence
         </h2>

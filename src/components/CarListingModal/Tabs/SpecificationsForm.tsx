@@ -3,10 +3,9 @@
 
 import { UseFormReturnType } from '@mantine/form';
 import { Grid, TextInput, Select, Stack } from '@mantine/core';
-import { CarFormValues } from '@/types/car';
 
 interface SpecificationsFormProps {
-  form: UseFormReturnType<CarFormValues>;
+  form: UseFormReturnType<any>;
 }
 
 export function SpecificationsForm({ form }: SpecificationsFormProps) {

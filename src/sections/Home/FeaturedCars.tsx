@@ -83,7 +83,7 @@ const FeaturedCars: React.FC = () => {
             <h2 className="text-3xl font-bold text-gray-800">Latest Cars</h2>
             <p className="text-gray-600 mt-2">Explore our top-rated vehicles with the best deals</p>
           </div>
-          <a href="/cars" className="inline-flex items-center text-[#1F75FE] hover:underline font-medium">
+          <a href="/cars" className="inline-flex items-center text-[#3D1703] hover:underline font-medium">
             View All
             <ArrowRight size={18} className="ml-1" />
           </a>
@@ -91,7 +91,7 @@ const FeaturedCars: React.FC = () => {
 
         {loading ? (
           <div className="flex justify-center items-center h-64">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#1F75FE]"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#3D1703]"></div>
           </div>
         ) : (
           <div className="relative px-12">
@@ -141,7 +141,7 @@ const FeaturedCars: React.FC = () => {
 
         .swiper-pagination-bullet-active {
           width: 24px;
-          background: #1F75FE;
+          background: #3D1703;
           border-radius: 4px;
         }
 

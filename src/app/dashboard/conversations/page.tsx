@@ -44,7 +44,7 @@ export default function ConversationsPage() {
   if (authLoading || loading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#3D1703]"></div>
       </div>
     );
   }
@@ -106,7 +106,7 @@ export default function ConversationsPage() {
           <div className="bg-white rounded-lg shadow p-8 text-center">
             <h2 className="text-lg font-medium text-gray-700 mb-2">No conversations yet</h2>
             <p className="text-gray-500 mb-4">Start browsing listings and chat with sellers.</p>
-            <Link href="/cars" className="inline-block px-5 py-2 bg-[#1F75FE] text-white rounded-md hover:bg-blue-700 transition-colors">
+            <Link href="/cars" className="inline-block px-5 py-2 bg-[#3D1703] text-white rounded-md hover:bg-[#3D1703] transition-colors">
               Browse Listings
             </Link>
           </div>
@@ -146,7 +146,7 @@ export default function ConversationsPage() {
                         </p>
                         
                         {hasUnread && (
-                          <span className="bg-[#1F75FE] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                          <span className="bg-[#3D1703] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                             {unreadCount}
                           </span>
                         )}

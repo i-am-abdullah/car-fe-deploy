@@ -121,3 +121,40 @@ export interface FormattedCarData {
   performanceSpecs: Specification[];
   contactInfo: ContactInfo;
 }
+
+export interface CarMake {
+  id: string;
+  name: string;
+  image_url?: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface CarModel {
+  id: string;
+  name: string;
+  image_url?: string;
+  created_at: string;
+  updated_at: string;
+  make: CarMake;
+}
+
+export interface CarYear {
+  id: string;
+  year: number;
+  created_at: string;
+  updated_at: string;
+  make: CarMake;
+  model: CarModel;
+}
+
+export interface CarVariant {
+  id: string;
+  name: string;
+  description?: string;
+  created_at: string;
+  updated_at: string;
+  make: CarMake;
+  model: CarModel;
+  year: CarYear;
+}

@@ -39,7 +39,7 @@ const CarHeader: React.FC<CarHeaderProps> = ({ make, model, year, price, phone, 
       <div className="flex flex-col md:flex-row md:items-center md:justify-between">
         {/* Price display */}
         <div className="price-container mb-4 md:mb-0">
-          <span className="font-semibold text-4xl text-[#1F75FE]">${price.toLocaleString()}</span>
+          <span className="font-semibold text-4xl text-[#3D1703]">${price.toLocaleString()}</span>
           <h1 className="text-xl font-bold text-gray-800 mt-2">{make} {model} {year}</h1>
         </div>
 
@@ -47,14 +47,14 @@ const CarHeader: React.FC<CarHeaderProps> = ({ make, model, year, price, phone, 
         <div className="action-buttons flex flex-wrap gap-3">
           <a 
             href={`tel:${phone}`} 
-            className="btn flex items-center gap-2 px-5 py-2 bg-[#1F75FE] text-white rounded-md hover:bg-blue-700 transition-colors"
+            className="btn flex items-center gap-2 px-5 py-2 bg-[#3D1703] text-white rounded-md hover:bg-[#3D1703] transition-colors"
           >
             <Phone size={18} />
             <span>Call Seller</span>
           </a>
           
           <button 
-            className={`btn flex items-center gap-2 px-5 py-2 border border-[#1F75FE] text-[#1F75FE] bg-white rounded-md hover:bg-blue-50 transition-colors ${loading ? 'opacity-70 cursor-not-allowed' : ''}     disabled:bg-gray-300
+            className={`btn flex items-center gap-2 px-5 py-2 border border-[#3D1703] text-[#3D1703] bg-white rounded-md hover:bg-gray-50 transition-colors ${loading ? 'opacity-70 cursor-not-allowed' : ''}     disabled:bg-gray-300
     disabled:border-gray-300
     disabled:text-gray-500
     disabled:cursor-not-allowed

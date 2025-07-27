@@ -285,7 +285,7 @@ export const mockAdminPromotions: Promotion[] = [
   /**
  * API base URL - Change this to your API endpoint
  */
-export const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+export const baseUrl = 'http://129.212.137.31:3000';
 
 /**
  * Local storage key for access token

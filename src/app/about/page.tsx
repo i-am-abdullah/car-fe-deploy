@@ -66,7 +66,7 @@ export default function AboutPage() {
       <Mission />
 
       {/* Achievements Section with Professional Stats */}
-      <Achievements achievements={achievements}/>
+      {/* <Achievements achievements={achievements}/> */}
 
       <Footer />
     </main>
