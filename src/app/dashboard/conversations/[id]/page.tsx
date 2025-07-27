@@ -4,7 +4,7 @@ import React, { useEffect, useState, useRef, FormEvent } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { format } from 'date-fns';
-import { Send, ArrowLeft, Car, User, Clock, CheckCheck, Check, Paperclip, Smile } from 'lucide-react';
+import { Send, ArrowLeft, Car, User, Clock, CheckCheck, Check, Smile } from 'lucide-react';
 import chatService, { Conversation, Message } from '@/services/ChatService';
 import { useAuth } from '@/hooks/useAuth';
 

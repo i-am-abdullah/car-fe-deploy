@@ -1,7 +1,7 @@
 'use client';
 // components/HowItWorks.tsx
 import React from 'react';
-import { MapPin, Mail, CreditCard, Car, Play } from 'lucide-react';
+import { MapPin, Mail, CreditCard, Car } from 'lucide-react';
 
 const HowItWorks: React.FC = () => {
   return (

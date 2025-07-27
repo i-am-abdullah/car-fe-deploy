@@ -1,7 +1,7 @@
 'use client';
 
 import { Modal, Button, Group, Switch, Stack, NumberInput, Loader } from '@mantine/core';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { InputField } from '../Input/Input';
 import { SelectField } from '../SelectField/SelectField';
 import { IconPlus, IconTrash } from '@tabler/icons-react';
@@ -76,7 +76,7 @@ export function CreateModal({
       await onSubmit(submitData, isBulk);
       handleClose();
     } catch (error) {
-      console.error('Create failed:', error);
+      console.error('Create failed:', error, selectedMakeId, selectedModelId);
     }
   };
 

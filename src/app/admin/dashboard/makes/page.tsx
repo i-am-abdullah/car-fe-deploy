@@ -27,7 +27,7 @@ export default function MakesPage() {
       const data = await api.fetchMakes();
       setMakes(data);
     } catch (error) {
-      toast.error('Failed to load makes');
+      toast.error(`Failed to load makes ${error}`);
     } finally {
       setLoading(false);
     }
@@ -86,7 +86,7 @@ export default function MakesPage() {
       await loadMakes();
       setDeleteModal({ open: false, item: null });
     } catch (error) {
-      toast.error('Failed to delete make');
+      toast.error(`Failed to delete make: ${error}`);
     } finally {
       setSubmitting(false);
     }

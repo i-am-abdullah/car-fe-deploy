@@ -22,7 +22,6 @@ export default function VariantsPage() {
     item: null,
   });
   const [submitting, setSubmitting] = useState(false);
-  const [currentFilters, setCurrentFilters] = useState<any>({});
 
   // Create modal specific states
   const [createModels, setCreateModels] = useState<CarModel[]>([]);
@@ -220,7 +219,6 @@ export default function VariantsPage() {
 
   const handleFilter = async (filters: any) => {
     try {
-      setCurrentFilters(filters);
       if (filters.makeId && filters.modelId && filters.yearId) {
         const filtered = await api.fetchVariantsByMakeModelYear(
           filters.makeId, 

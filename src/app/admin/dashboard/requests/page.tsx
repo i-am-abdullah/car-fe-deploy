@@ -12,7 +12,6 @@ import {
   Grid,
   Card,
   Image,
-  List,
   Divider,
   Button,
   Box,

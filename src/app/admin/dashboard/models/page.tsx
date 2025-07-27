@@ -22,7 +22,6 @@ export default function ModelsPage() {
     item: null,
   });
   const [submitting, setSubmitting] = useState(false);
-  const [currentFilters, setCurrentFilters] = useState<any>({});
 
   const api = useCarApi();
 
@@ -37,7 +36,7 @@ export default function ModelsPage() {
       setMakes(makesData);
       setFilteredModels(modelsData);
     } catch (error) {
-      toast.error('Failed to load data');
+      toast.error(`Failed to load data: ${error}`);
     } finally {
       setLoading(false);
     }
@@ -103,7 +102,7 @@ export default function ModelsPage() {
       await loadData();
       setDeleteModal({ open: false, item: null });
     } catch (error) {
-      toast.error('Failed to delete model');
+      toast.error(`Failed to delete model: ${error}`);
     } finally {
       setSubmitting(false);
     }
@@ -111,7 +110,6 @@ export default function ModelsPage() {
 
   const handleFilter = async (filters: any) => {
     try {
-      setCurrentFilters(filters);
       if (filters.makeId) {
         const filtered = await api.fetchModelsByMake(filters.makeId);
         setFilteredModels(filtered);
@@ -119,7 +117,7 @@ export default function ModelsPage() {
         setFilteredModels(models);
       }
     } catch (error) {
-      toast.error('Failed to apply filters');
+      toast.error(`Failed to apply filters: ${error}`);
     }
   };
 

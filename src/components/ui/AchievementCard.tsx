@@ -1,6 +1,5 @@
 import React from 'react'
 import { CardProps } from '@/types/cards'
-import { Icon } from 'lucide-react'
 
 const AchievementCard:React.FC<CardProps> = ({ icon: Icon, title, description }) => {
     return (

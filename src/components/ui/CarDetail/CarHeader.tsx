@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Phone, MessageCircle, Heart } from 'lucide-react';
+import { Phone, MessageCircle } from 'lucide-react';
 import chatService from '@/services/ChatService';
 import toast from 'react-hot-toast';
 

@@ -13,8 +13,6 @@ interface DetailsFormProps {
 export function DetailsForm({ form }: DetailsFormProps) {
   const [registrationCities, setRegistrationCities] = useState<any[]>([]);
   const [features, setFeatures] = useState<any[]>([]);
-  const [loadingCities, setLoadingCities] = useState(true);
-  const [loadingFeatures, setLoadingFeatures] = useState(true);
 
   // Load registration cities and features on component mount
   useEffect(() => {
@@ -29,9 +27,6 @@ export function DetailsForm({ form }: DetailsFormProps) {
         setFeatures(featuresData);
       } catch (error) {
         console.error('Failed to load data:', error);
-      } finally {
-        setLoadingCities(false);
-        setLoadingFeatures(false);
       }
     }
     

@@ -1,15 +1,13 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import {
-    Heart,
     MapPin,
     Calendar,
     Gauge,
     Fuel,
     Settings,
     Zap,
-    Edit,
     Trash2,
     AlertCircle,
     Eye

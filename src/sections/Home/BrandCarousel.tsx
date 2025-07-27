@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import BrandCard from '../../components/ui/BrandCard';
-import { ChevronRight, ChevronLeft, ArrowRight } from 'lucide-react';
+import { ChevronRight, ChevronLeft } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 

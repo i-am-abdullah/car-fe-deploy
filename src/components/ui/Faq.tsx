@@ -1,11 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
-import { FAQ } from '@/types/car';
 import "@/app/globals.css"
 
 interface FaqSectionProps {
-  faqs: FAQ[];
+  faqs: any[];
 }
 
 const FaqSection: React.FC<FaqSectionProps> = ({ faqs }) => {

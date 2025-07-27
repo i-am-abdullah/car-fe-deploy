@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams} from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Car, User, Clock, MessageSquare, Users, RefreshCw } from 'lucide-react';
 import adminChatService, { AdminMessage, AdminConversation } from '@/services/AdminChatService';
@@ -8,7 +8,6 @@ import { useAuth } from '@/hooks/useAuth';
 
 export default function AdminChatPage() {
   const { id } = useParams();
-  const router = useRouter();
   const conversationId = Array.isArray(id) ? id[0] : id as string;
     const { loading: authLoading } = useAuth();
   const [messages, setMessages] = useState<AdminMessage[]>([]);

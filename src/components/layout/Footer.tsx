@@ -1,8 +1,6 @@
 'use client';
 import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin, ArrowRight } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Linkedin, ArrowRight } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (

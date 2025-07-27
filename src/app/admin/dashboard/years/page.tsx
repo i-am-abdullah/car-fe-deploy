@@ -22,7 +22,6 @@ export default function YearsPage() {
     item: null,
   });
   const [submitting, setSubmitting] = useState(false);
-  const [currentFilters, setCurrentFilters] = useState<any>({});
   
   // Separate states for create modal
   const [createModels, setCreateModels] = useState<CarModel[]>([]);
@@ -141,7 +140,6 @@ export default function YearsPage() {
 
   const handleFilter = async (filters: any) => {
     try {
-      setCurrentFilters(filters);
       if (filters.makeId && filters.modelId) {
         const filtered = await api.fetchYearsByMakeAndModel(filters.makeId, filters.modelId);
         setFilteredYears(filtered);

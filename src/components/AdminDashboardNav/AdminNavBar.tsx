@@ -3,16 +3,13 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import {
   IconLayout2,
-  IconList,
   IconLogout,
   IconMessage2,
-  IconPinFilled,
-  IconSwitchHorizontal,
-  IconTicket,
+  IconPinFilled
 } from '@tabler/icons-react';
 import classes from './navbar.module.css';
 import { logout } from '@/services/authService';
-import { BadgeCheckIcon, CalendarClockIcon, CarIcon, ListTree, Settings2, Tags } from 'lucide-react';
+import { BadgeCheckIcon, CalendarClockIcon, Settings2, Tags } from 'lucide-react';
 
 const data = [
   { link: '/admin/dashboard', label: 'Car Listings', icon: IconLayout2 },

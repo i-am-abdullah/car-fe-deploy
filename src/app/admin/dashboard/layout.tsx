@@ -2,7 +2,6 @@
 
 import { AppShell, Burger, Button, Group } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { NavbarSimple } from '@/components/DashboardNav/NavBarDashboard';
 import { AdminNavbar } from '@/components/AdminDashboardNav/AdminNavBar';
 import { useRouter } from 'next/navigation';
 

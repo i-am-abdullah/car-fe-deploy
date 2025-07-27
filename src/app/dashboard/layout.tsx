@@ -3,7 +3,6 @@
 import { AppShell, Burger, Button, Group } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { NavbarSimple } from '@/components/DashboardNav/NavBarDashboard';
-import { User } from 'lucide-react';
 import { useRouter } from 'next/navigation'; // ✅ import router
 
 export default function DashboardLayout({

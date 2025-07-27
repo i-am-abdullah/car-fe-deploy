@@ -1,8 +1,8 @@
 import React from 'react'
 
 interface HeaderProps {
-    title:String;
-    description?:String;
+    title:string;
+    description?:string;
   }
 const Header: React.FC<HeaderProps> = ({title, description}) => {
   return (

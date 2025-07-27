@@ -1,15 +1,12 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { DollarSign, Shield, Award, Settings } from "lucide-react";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
 import Header from "@/components/layout/Header";
-import AboutCard from "@/components/ui/AboutCard";
 import Values from "@/sections/About/Values";
 import Mission from "@/sections/About/Mission";
-import Achievements from "@/sections/About/Achievements";
 import OurStory from "@/sections/About/OurStory";
 
 export default function AboutPage() {

@@ -1,5 +1,4 @@
 // utils/carFormUtils.ts
-import { CarListing } from "@/services/carListingAdminServices";
 
 // Define interfaces for better type safety
 interface ImageObject {

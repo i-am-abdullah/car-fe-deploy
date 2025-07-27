@@ -16,7 +16,7 @@ import {
   Radio,
   RadioGroup
 } from '@mantine/core';
-import { IconCheck, IconInfoCircle } from '@tabler/icons-react';
+import { IconCheck } from '@tabler/icons-react';
 import { Promotion, PROMOTION_PLANS } from '@/types/promotion';
 
 interface CreatePromotionFormProps {

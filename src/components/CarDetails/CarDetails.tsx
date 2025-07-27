@@ -10,7 +10,6 @@ import CarDescription from '@/components/ui/CarDetail/CarDescription';
 import KeyFeatures from '@/components/ui/CarDetail/KeyFeatures';
 import OverviewTable from '@/components/ui/CarDetail/Overview';
 import EnginePerformance from '@/components/ui/CarDetail/EnginePerformance';
-import Sidebar from '@/components/layout/Sidebar';
 import "@/app/globals.css";
 import Header from '../layout/Header';
 import { getAccessToken } from '@/utils/tokenUtils';

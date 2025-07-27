@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import { get, post, del, put } from '../utils/api';
+import { get, post, del} from '../utils/api';
 import { CarMake, CarModel, CarYear, CarVariant } from '../types/car';
 
 export const useCarApi = () => {

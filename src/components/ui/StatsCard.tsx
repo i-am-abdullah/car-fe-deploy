@@ -1,14 +1,8 @@
 import { 
-    Title, 
     Text, 
-    Card, 
-    SimpleGrid, 
-    Container, 
     Group, 
     Paper, 
-    RingProgress, 
     ThemeIcon,
-    Center,
     rem
   } from '@mantine/core';
   import { StatsData } from '@/types/stats';

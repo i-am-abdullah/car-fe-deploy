@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Container, Title, Button, Group, Card, Text, SimpleGrid, LoadingOverlay } from '@mantine/core';
-import { IconPlus, IconCar } from '@tabler/icons-react';
+import { Container, Title, Group, Card, Text, SimpleGrid, LoadingOverlay } from '@mantine/core';
+import { IconCar } from '@tabler/icons-react';
 import { CarListingModal } from '@/components/CarListingModal/CarListingModal';
 import toast from 'react-hot-toast';
 import { useAuth } from '@/hooks/useAuth';

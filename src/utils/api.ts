@@ -4,9 +4,7 @@ import toast from 'react-hot-toast'
 import { baseUrl } from '../constants'
 import {
   getAccessToken,
-  getRefreshToken,
   clearTokens,
-  setTokens,
 } from './tokenUtils'
 import { refreshToken as doRefresh } from './refreshToken'
 

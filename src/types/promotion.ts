@@ -1,5 +1,4 @@
 // types/promotion.ts
-import { Car } from './car';
 import { User } from './user';
 
 export type PromotionPlan = {

@@ -12,9 +12,7 @@ import {
   Text,
 } from '@mantine/core';
 import { InputField } from '@/components/Input/Input';
-import { ImageUpload } from '@/components/FileUpload/FileUpload';
 import { signup } from '@/services/authService';
-import { FileWithPath } from '@mantine/dropzone';
 import Link from 'next/link';
 
 export default function SignupPage() {

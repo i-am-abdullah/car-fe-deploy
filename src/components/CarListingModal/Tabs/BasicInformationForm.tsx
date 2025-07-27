@@ -31,7 +31,7 @@ export function BasicInformationForm({ form, isEditing }: BasicInformationFormPr
         console.log(data);
 
       } catch (error) {
-        console.error('Failed to load car makes:', error);
+        console.error('Failed to load car makes:', error, loadingMakes);
       } finally {
         setLoadingMakes(false);
       }

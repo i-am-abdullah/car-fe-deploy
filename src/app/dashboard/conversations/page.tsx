@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import {format} from 'date-fns';
 import chatService, { Conversation } from '@/services/ChatService';
@@ -10,7 +9,6 @@ import Header from '@/components/layout/Header';
 
 export default function ConversationsPage() {
   const { loading: authLoading } = useAuth();
-  const router = useRouter();
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

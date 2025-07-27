@@ -9,11 +9,9 @@ import {
   Text, 
   Stack, 
   Card, 
-  ActionIcon, 
   Badge,
   Select
 } from '@mantine/core';
-import { IconEye, IconCar, IconUser } from '@tabler/icons-react';
 import ReusableTable from '@/components/layout/DataTable';
 import { mockAdminPromotions } from '@/constants';
 import { Promotion } from '@/types/promotion';

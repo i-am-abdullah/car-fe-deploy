@@ -1,7 +1,7 @@
 'use client';
 
 import { Modal, Button, Group, Stack, Loader } from '@mantine/core';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { SelectField } from '../SelectField/SelectField';
 
 interface FilterModalProps {

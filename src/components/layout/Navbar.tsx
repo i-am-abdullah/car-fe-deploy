@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { getAccessToken } from '@/utils/tokenUtils';
-import { parseJwt, useAuth } from '@/hooks/useAuth';
+import { parseJwt } from '@/hooks/useAuth';
 import { MailsIcon } from 'lucide-react';
 
 const Navbar = () => {
