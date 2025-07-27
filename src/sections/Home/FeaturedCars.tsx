@@ -7,6 +7,7 @@ import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { baseUrl } from '@/constants';
 
 interface RawCarItem {
   id: string;
@@ -60,7 +61,6 @@ const FeaturedCars: React.FC = () => {
   useEffect(() => {
     const fetchFeaturedCars = async () => {
       try {
-        const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
         const response = await fetch(`${baseUrl}/public/car-listings/?page=1&limit=8`);
         const data = await response.json();
         const transformed = transformCarData(data.items || []);

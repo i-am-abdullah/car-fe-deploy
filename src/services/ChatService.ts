@@ -56,7 +56,7 @@ class ChatService {
   private messageListeners: Map<string, ((message: Message) => void)[]> = new Map();
   private typingListeners: Map<string, ((data: any) => void)[]> = new Map();
   private messagesReadListeners: Map<string, ((data: any) => void)[]> = new Map();
-  private baseUrl = process.env.NEXT_PUBLIC_SOCKET_URL || 'ws://localhost:3000';
+  private baseUrl = process.env.NEXT_PUBLIC_SOCKET_URL || 'ws://129.212.137.31:3000';
   private connectionPromise: Promise<void> | null = null;
   private userId: string | null = null;
 

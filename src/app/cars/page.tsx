@@ -4,6 +4,7 @@ import CarCard from '../../components/ui/CarCard';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import { baseUrl } from '@/constants';
 
 interface RawCarItem {
   id: string;
@@ -72,7 +73,6 @@ const CarListingsPage = () => {
     const fetchCars = async () => {
       setLoading(true);
       try {
-        const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
         const response = await fetch(`${baseUrl}/public/car-listings/?page=${currentPage}&limit=${limit}`);
 
         if (!response.ok) {
