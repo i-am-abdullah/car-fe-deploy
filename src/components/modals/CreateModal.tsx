@@ -10,7 +10,7 @@ interface CreateModalProps {
   opened: boolean;
   onClose: () => void;
   title: string;
-  entityType: 'make' | 'model' | 'year' | 'variant';
+  entityType: 'make' | 'model' | 'year' | 'variant' | 'feature' | 'city';
   onSubmit: (data: any, isBulk: boolean) => Promise<void>;
   makeOptions?: { value: string; label: string }[];
   modelOptions?: { value: string; label: string }[];
@@ -104,6 +104,10 @@ export function CreateModal({
         return { year: new Date().getFullYear() };
       case 'variant':
         return { name: '', description: '' };
+      case 'feature':
+        return { name: '', is_active: true };
+      case 'city':
+        return { name: '' };
       default:
         return {};
     }
@@ -152,6 +156,35 @@ export function CreateModal({
           <InputField
             label="Make Name"
             placeholder="Enter make name"
+            value={singleData.name || ''}
+            onChange={(val) => setSingleData({ ...singleData, name: val })}
+            required
+          />
+        );
+
+      case 'feature':
+        return (
+          <Stack>
+            <InputField
+              label="Feature Name"
+              placeholder="Enter feature name"
+              value={singleData.name || ''}
+              onChange={(val) => setSingleData({ ...singleData, name: val })}
+              required
+            />
+            <Switch
+              label="Active"
+              checked={singleData.is_active !== undefined ? singleData.is_active : true}
+              onChange={(event) => setSingleData({ ...singleData, is_active: event.currentTarget.checked })}
+            />
+          </Stack>
+        );
+
+      case 'city':
+        return (
+          <InputField
+            label="City Name"
+            placeholder="Enter registration city name"
             value={singleData.name || ''}
             onChange={(val) => setSingleData({ ...singleData, name: val })}
             required
@@ -333,7 +366,7 @@ export function CreateModal({
           </Button>
         </Group>
 
-        {entityType !== 'make' && (
+        {entityType !== 'make' && entityType !== 'feature' && entityType !== 'city' && (
           <Stack>
             {entityType === 'model' && (
               <SelectField
@@ -429,6 +462,29 @@ export function CreateModal({
                   onChange={(val) => updateBulkItem(index, 'name', val)}
                 />
               )}
+              {entityType === 'feature' && (
+                <Stack gap="xs">
+                  <InputField
+                    label={`Feature ${index + 1}`}
+                    placeholder="Enter feature name"
+                    value={item.name || ''}
+                    onChange={(val) => updateBulkItem(index, 'name', val)}
+                  />
+                  <Switch
+                    label="Active"
+                    checked={item.is_active !== undefined ? item.is_active : true}
+                    onChange={(event) => updateBulkItem(index, 'is_active', event.currentTarget.checked)}
+                  />
+                </Stack>
+              )}
+              {entityType === 'city' && (
+                <InputField
+                  label={`City ${index + 1}`}
+                  placeholder="Enter city name"
+                  value={item.name || ''}
+                  onChange={(val) => updateBulkItem(index, 'name', val)}
+                />
+              )}
               {entityType === 'model' && (
                 <InputField
                   label={`Model ${index + 1}`}
@@ -479,6 +535,20 @@ export function CreateModal({
 
   // Check if form is valid for submission
   const isFormValid = () => {
+    if (entityType === 'feature') {
+      if (isBulk) {
+        return bulkData.length > 0 && bulkData.every(item => item.name?.trim());
+      } else {
+        return singleData.name?.trim();
+      }
+    }
+    if (entityType === 'city') {
+      if (isBulk) {
+        return bulkData.length > 0 && bulkData.every(item => item.name?.trim());
+      } else {
+        return singleData.name?.trim();
+      }
+    }
     if (entityType === 'year') {
       if (isBulk) {
         return singleData.makeId && singleData.modelId && bulkData.length > 0 && 

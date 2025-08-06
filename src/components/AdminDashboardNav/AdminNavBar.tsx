@@ -9,23 +9,26 @@ import {
 } from '@tabler/icons-react';
 import classes from './navbar.module.css';
 import { logout } from '@/services/authService';
-import { BadgeCheckIcon, CalendarClockIcon, Settings2, Tags } from 'lucide-react';
+import { BadgeCheckIcon, CalendarClockIcon, ClipboardList, LandPlot, MapPinCheck, Settings2, Tags } from 'lucide-react';
 
 const data = [
   { link: '/admin/dashboard', label: 'Car Listings', icon: IconLayout2 },
   { link: '/admin/dashboard/requests', label: 'Requests', icon: IconPinFilled },
   { link: '/admin/dashboard/conversations', label: 'Conversations', icon: IconMessage2 },
   { link: '/admin/dashboard/makes', label: 'Makes', icon: BadgeCheckIcon },
-    { link: '/admin/dashboard/models', label: 'Models', icon: Tags },
-    { link: '/admin/dashboard/years', label: 'Years', icon: CalendarClockIcon },
-    { link: '/admin/dashboard/variants', label: 'Variants', icon: Settings2 }
+  { link: '/admin/dashboard/models', label: 'Models', icon: Tags },
+  { link: '/admin/dashboard/years', label: 'Years', icon: CalendarClockIcon },
+  { link: '/admin/dashboard/variants', label: 'Variants', icon: Settings2 },
+  { link: '/admin/dashboard/features', label: 'Features', icon: ClipboardList },
+  { link: '/admin/dashboard/registration-cities', label: 'Registration Cities', icon: MapPinCheck },
+
 ];
 
 export function AdminNavbar() {
   const pathname = usePathname();
 
   const links = data.map((item) => (
-    <Link 
+    <Link
       className={classes.link}
       key={item.label}
       href={item.link}
