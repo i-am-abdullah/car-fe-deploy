@@ -28,8 +28,6 @@ export function BasicInformationForm({ form, isEditing }: BasicInformationFormPr
       try {
         const data = await getCarMakes();
         setMakes(data);
-        console.log(data);
-
       } catch (error) {
         console.error('Failed to load car makes:', error, loadingMakes);
       } finally {

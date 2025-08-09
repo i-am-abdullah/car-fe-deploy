@@ -29,7 +29,6 @@ export default function CarListingsPage() {
     try {
       const data = await getUserCarListings();
       setCarListings(data);
-      console.log('Loaded car listings:', data);
     } catch (error) {
       console.error('Failed to load car listings:', error);
       toast.error('Failed to load car listings');
